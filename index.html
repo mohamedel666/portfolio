@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Farag | AI Engineer Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Manrope','system-ui','sans-serif']}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--ease:cubic-bezier(.22,.8,.3,1)}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Manrope',system-ui,sans-serif;overflow-x:hidden;background:#f6f8fc}
+:focus-visible{outline:2px solid #2563eb;outline-offset:3px;border-radius:8px}
+/* scroll reveal */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+/* hero entrance */
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.94) rotate(-2deg)}to{opacity:1;transform:none}}
+.h1a{animation:rise .8s var(--ease) both}.h2a{animation:rise .8s .12s var(--ease) both}
+.h3a{animation:rise .8s .26s var(--ease) both}.himg{animation:pop .9s .15s var(--ease) both}
+/* nav */
+.nl{position:relative;padding:.5rem .1rem;transition:color .2s,transform .2s}
+.nl:hover{color:#2563eb;transform:translateY(-1px)}
+.nl.on{color:#0f172a}
+#ul{position:absolute;bottom:0;left:0;height:2px;width:0;background:#2563eb;border-radius:2px;transition:transform .45s var(--ease),width .45s var(--ease),opacity .3s;opacity:0}
+/* cards */
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:1rem;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
+.card:hover{transform:translateY(-4px);border-color:#bfdbfe;box-shadow:0 18px 36px -18px rgba(37,99,235,.28)}
+.tag{transition:transform .2s,background .2s,color .2s}
+.tag:hover{transform:translateY(-2px);background:#2563eb;color:#fff}
+.btn{transition:transform .25s var(--ease),background .25s,box-shadow .25s,border-color .25s,color .25s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(0)}
+.pimg img{transition:transform .7s var(--ease)}.card:hover .pimg img{transform:scale(1.06)}
+/* process */
+.pline{transform:scaleX(0);transform-origin:left;transition:transform 1.2s .2s var(--ease)}
+.in .pline,.pline.in{transform:scaleX(1)}
+/* timeline */
+.tl{position:relative}
+.tl:before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(#93c5fd,#e2e8f0)}
+.dot{position:absolute;left:0;top:26px;width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid #2563eb;display:grid;place-items:center}
+.dot:after{content:"";width:8px;height:8px;border-radius:50%;background:#2563eb}
+/* modals */
+.modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:1rem;background:rgba(15,23,42,.55);backdrop-filter:blur(4px);visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s}
+.modal.open{visibility:visible;opacity:1}
+.panel{transform:translateY(20px) scale(.97);transition:transform .4s var(--ease)}
+.modal.open .panel{transform:none}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*,*:before,*:after{animation:none!important;transition-duration:.01ms!important}
+.js .rv{opacity:1;transform:none}.pline{transform:none}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="text-slate-700 antialiased selection:bg-blue-600 selection:text-white">
+
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-slate-200/80">
+<nav class="max-w-6xl mx-auto px-5 sm:px-6 h-16 flex justify-between items-center" aria-label="Main">
+<a href="#" class="text-xl font-extrabold tracking-tight text-slate-900">Mohamed<span class="text-blue-600">.AI</span></a>
+<div id="links" class="hidden md:flex relative gap-8 text-sm font-semibold text-slate-500">
+<a href="#about" class="nl">About</a>
+<a href="#specializations" class="nl">Expertise</a>
+<a href="#skills" class="nl">Skills</a>
+<a href="#projects" class="nl">Projects</a>
+<a href="#experience" class="nl">Experience</a>
+<a href="#contact" class="nl">Contact</a>
+<span id="ul"></span>
+</div>
+<div class="flex items-center gap-3">
+<a href="#contact" class="btn hidden sm:inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg shadow-sm"><i class="fa-solid fa-paper-plane text-xs"></i> Get in Touch</a>
+<button id="menuBtn" class="md:hidden w-10 h-10 rounded-lg border border-slate-200 bg-white grid place-items-center" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu"><i class="fa-solid fa-bars"></i></button>
+</div>
+</nav>
+<div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white px-5 pb-4 pt-2">
+<div class="flex flex-col text-base font-semibold text-slate-600">
+<a href="#about" class="ml py-3 border-b border-slate-100">About</a>
+<a href="#specializations" class="ml py-3 border-b border-slate-100">Expertise</a>
+<a href="#skills" class="ml py-3 border-b border-slate-100">Skills</a>
+<a href="#projects" class="ml py-3 border-b border-slate-100">Projects</a>
+<a href="#experience" class="ml py-3 border-b border-slate-100">Experience</a>
+<a href="#contact" class="ml py-3">Contact</a>
+</div>
+</div>
+</header>
+
+<!-- Hero -->
+<section class="relative max-w-6xl mx-auto px-5 sm:px-6 pt-12 sm:pt-16 pb-16 min-h-[calc(100vh-4rem)] flex flex-col justify-center">
+<div class="grid md:grid-cols-[1.15fr_.85fr] gap-12 items-center">
+<div class="order-2 md:order-1 text-center md:text-left">
+<h1 class="h1a text-5xl sm:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.05]">Hi, I'm <br class="hidden sm:inline"/><span class="text-slate-900">Mohamed Farag</span></h1>
+<h2 class="h2a text-3xl sm:text-5xl font-bold text-blue-600 mt-3">AI Engineer</h2>
+<div class="h3a mt-10 pt-8 border-t border-slate-200 max-w-xl mx-auto md:mx-0">
+<p class="text-xs uppercase tracking-wider text-slate-400 mb-4 font-semibold">Connect &amp; Repositories</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-3">
+<a href="https://github.com/mohamedel666" target="_blank" rel="noopener noreferrer" class="btn flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white border border-slate-900 rounded-xl shadow-sm hover:bg-blue-600 hover:border-blue-600 text-sm font-semibold"><i class="fa-brands fa-github text-lg"></i> GitHub</a>
+<a href="https://linkedin.com/in/mohamed-farag-3aa602380" target="_blank" rel="noopener noreferrer" class="btn flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-blue-500 hover:text-blue-600 text-sm font-semibold text-slate-700"><i class="fa-brands fa-linkedin text-lg text-blue-600"></i> LinkedIn</a>
+<a href="mailto:mohamed@example.com" class="btn flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-blue-500 hover:text-blue-600 text-sm font-semibold text-slate-700"><i class="fa-solid fa-envelope text-lg text-rose-500"></i> Email Me</a>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2 flex justify-center">
+<div class="himg relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80">
+<div class="absolute inset-0 translate-x-4 translate-y-4 rounded-[2rem] bg-blue-100"></div>
+<div class="absolute inset-0 -translate-x-3 -translate-y-3 rounded-[2rem] border-2 border-blue-600/70"></div>
+<div class="relative w-full h-full rounded-[2rem] overflow-hidden border-4 border-white shadow-xl bg-slate-200">
+<img src="mo.jpeg" alt="Mohamed Farag" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80'">
+</div>
+</div>
+</div>
+</div>
+<a href="#about" aria-label="Scroll to About" class="hidden md:grid absolute bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 place-items-center rounded-full border border-slate-300 text-slate-400 hover:text-blue-600 hover:border-blue-600 transition"><i class="fa-solid fa-arrow-down text-sm"></i></a>
+</section>
+
+<!-- About -->
+<section id="about" class="py-20 sm:py-24 bg-white border-y border-slate-200 px-5 sm:px-6">
+<div class="max-w-6xl mx-auto grid md:grid-cols-[.6fr_1.4fr] gap-8 md:gap-14">
+<div class="rv md:sticky md:top-28 self-start">
+<h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 flex items-center gap-3"><span class="w-2 h-9 bg-blue-600 rounded-full"></span> About Me</h2>
+</div>
+<div class="rv space-y-5 leading-relaxed text-slate-600 text-base sm:text-lg max-w-2xl">
+<p class="text-slate-900 font-medium text-xl sm:text-2xl leading-snug">I'm Mohamed Farag, an AI Engineer focused on building practical AI systems powered by Generative AI, Large Language Models, RAG, and AI Agents.</p>
+<p>I graduated from the Faculty of Artificial Intelligence at Delta University for Science and Technology, where I developed a strong foundation in AI and software development. Since then, I've focused on turning AI concepts into real, usable applications — from AI meeting assistants and intelligent career platforms to AI-powered decision systems and Arabic/English document processing.</p>
+<p>My work combines Python, FastAPI, LLMs, RAG, AI agents, APIs, and modern AI tools to build systems that go beyond simple chatbots. I care about designing the complete pipeline: understanding the problem, choosing the right AI approach, connecting models with tools and data, building reliable APIs, and delivering an application that actually solves a problem.</p>
+<p>I'm particularly interested in Agentic AI, Generative AI, RAG, AI Automation, and intelligent backend systems, and I'm continuously building and experimenting with new ways to make AI applications more useful, reliable, and practical.</p>
+<div class="pt-4 flex flex-wrap gap-2 text-xs font-bold">
+<span class="tag bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1.5 rounded-lg">LLM Applications</span>
+<span class="tag bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1.5 rounded-lg">RAG Pipelines</span>
+<span class="tag bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1.5 rounded-lg">AI Agents</span>
+<span class="tag bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1.5 rounded-lg">AI Automation</span>
+<span class="tag bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1.5 rounded-lg">FastAPI &amp; APIs</span>
+<span class="tag bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1.5 rounded-lg">Local LLMs</span>
+<span class="tag bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1.5 rounded-lg">AI Integrations</span>
+<span class="tag bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1.5 rounded-lg">Document AI &amp; OCR</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Expertise -->
+<section id="specializations" class="py-20 sm:py-24 max-w-6xl mx-auto px-5 sm:px-6">
+<h2 class="rv text-3xl sm:text-4xl font-extrabold text-slate-900 mb-12 text-center">What I Build</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="rv card p-7 group flex gap-5" style="transition-delay:0ms">
+<div class="w-12 h-12 shrink-0 bg-blue-50 text-blue-600 rounded-xl grid place-items-center text-xl transition group-hover:bg-blue-600 group-hover:text-white"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+<div><h3 class="text-xl font-bold text-slate-900 mb-2">Generative AI</h3><p class="text-slate-600 text-sm leading-relaxed">LLM-powered applications, structured outputs, prompt engineering, local LLMs and AI integrations.</p></div>
+</div>
+<div class="rv card p-7 group flex gap-5" style="transition-delay:80ms">
+<div class="w-12 h-12 shrink-0 bg-blue-50 text-blue-600 rounded-xl grid place-items-center text-xl transition group-hover:bg-blue-600 group-hover:text-white"><i class="fa-solid fa-database"></i></div>
+<div><h3 class="text-xl font-bold text-slate-900 mb-2">RAG Systems</h3><p class="text-slate-600 text-sm leading-relaxed">Retrieval pipelines, embeddings, vector search, contextual generation, and document-based AI.</p></div>
+</div>
+<div class="rv card p-7 group flex gap-5" style="transition-delay:160ms">
+<div class="w-12 h-12 shrink-0 bg-blue-50 text-blue-600 rounded-xl grid place-items-center text-xl transition group-hover:bg-blue-600 group-hover:text-white"><i class="fa-solid fa-robot"></i></div>
+<div><h3 class="text-xl font-bold text-slate-900 mb-2">AI Agents</h3><p class="text-slate-600 text-sm leading-relaxed">Agentic workflows, tool usage, reasoning workflows, automation, and task-oriented AI systems.</p></div>
+</div>
+<div class="rv card p-7 group flex gap-5" style="transition-delay:240ms">
+<div class="w-12 h-12 shrink-0 bg-blue-50 text-blue-600 rounded-xl grid place-items-center text-xl transition group-hover:bg-blue-600 group-hover:text-white"><i class="fa-solid fa-server"></i></div>
+<div><h3 class="text-xl font-bold text-slate-900 mb-2">AI Applications</h3><p class="text-slate-600 text-sm leading-relaxed">FastAPI backends, Streamlit applications, APIs, real-time applications, and AI-powered products.</p></div>
+</div>
+</div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="py-20 sm:py-24 bg-white border-y border-slate-200 px-5 sm:px-6">
+<div class="max-w-6xl mx-auto">
+<h2 class="rv text-3xl sm:text-4xl font-extrabold text-slate-900 mb-12 text-center">Technical Skills</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+<div class="rv card p-6 bg-slate-50" style="transition-delay:0ms">
+<h3 class="font-bold mb-4 flex items-center gap-2 text-blue-600"><i class="fa-solid fa-brain"></i> Generative AI &amp; LLMs</h3>
+<ul class="space-y-2 text-sm text-slate-600"><li>• LLMs &amp; Prompt Engineering</li><li>• Hugging Face &amp; Ollama</li><li>• Local LLMs &amp; Structured Outputs</li><li>• Embeddings</li></ul>
+</div>
+<div class="rv card p-6 bg-slate-50" style="transition-delay:80ms">
+<h3 class="font-bold mb-4 flex items-center gap-2 text-blue-600"><i class="fa-solid fa-network-wired"></i> RAG &amp; AI Agents</h3>
+<ul class="space-y-2 text-sm text-slate-600"><li>• RAG &amp; Retrieval Pipelines</li><li>• LangChain &amp; LangGraph</li><li>• Vector Databases</li><li>• AI Agents &amp; Agentic Workflows</li></ul>
+</div>
+<div class="rv card p-6 bg-slate-50" style="transition-delay:160ms">
+<h3 class="font-bold mb-4 flex items-center gap-2 text-blue-600"><i class="fa-solid fa-terminal"></i> Backend &amp; APIs</h3>
+<ul class="space-y-2 text-sm text-slate-600"><li>• Python &amp; FastAPI</li><li>• REST APIs &amp; Pydantic</li><li>• JSON &amp; SQL / PostgreSQL</li><li>• API Integration</li></ul>
+</div>
+<div class="rv card p-6 bg-slate-50" style="transition-delay:240ms">
+<h3 class="font-bold mb-4 flex items-center gap-2 text-blue-600"><i class="fa-solid fa-toolbox"></i> Tools &amp; App Dev</h3>
+<ul class="space-y-2 text-sm text-slate-600"><li>• Streamlit &amp; React</li><li>• Docker &amp; Linux</li><li>• Git &amp; GitHub</li><li>• LangSmith &amp; WebRTC</li></ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="py-20 sm:py-24 max-w-6xl mx-auto px-5 sm:px-6">
+<h2 class="rv text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 text-center">Featured Projects</h2>
+<p class="rv text-slate-600 text-center mb-12 max-w-xl mx-auto">Real AI applications built with structured architecture, backend APIs, and intelligent pipelines.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+
+<!-- Project 1: EchoMeet -->
+<article class="rv card overflow-hidden flex flex-col justify-between" style="transition-delay:0ms">
+<div>
+<div class="pimg w-full h-48 sm:h-56 bg-slate-100 overflow-hidden border-b border-slate-100">
+<img src="echo_meet_concept_illustration.png" alt="EchoMeet Preview" loading="lazy" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=80'">
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start gap-3 mb-4">
+<span class="cat text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full">Generative AI &amp; Audio</span>
+<a href="https://github.com/mohamedel666/EchoMeet" target="_blank" rel="noopener noreferrer" aria-label="EchoMeet on GitHub" class="text-slate-400 hover:text-slate-900 text-xl transition hover:scale-110"><i class="fa-brands fa-github"></i></a>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-1">EchoMeet</h3>
+<p class="text-blue-600 font-semibold text-sm mb-3">AI-Powered Meeting Assistant</p>
+<p class="text-slate-600 text-sm leading-relaxed mb-5">An end-to-end AI meeting intelligence application capturing, transcribing, and summarizing meetings automatically with speaker diarization and bilingual support.</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">React</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">FastAPI</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">WebRTC</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">AssemblyAI</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Gemini</span>
+</div>
+</div>
+</div>
+<div class="px-6 pb-6 pt-1">
+<button onclick="openModal('echomeet',this)" class="btn w-full bg-slate-900 hover:bg-blue-600 text-white text-sm font-semibold py-3 rounded-xl">View Details &amp; Architecture</button>
+</div>
+</article>
+
+<!-- Project 2: DeliveryCare AI -->
+<article class="rv card overflow-hidden flex flex-col justify-between" style="transition-delay:100ms">
+<div>
+<div class="pimg w-full h-48 sm:h-56 bg-slate-100 overflow-hidden border-b border-slate-100">
+<img src="delivery.jpeg" alt="DeliveryCare AI Preview" loading="lazy" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80'">
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start gap-3 mb-4">
+<span class="cat text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full">AI Agent / Decision Automation</span>
+<a href="https://github.com/mohamedel666/delivery-care-ai" target="_blank" rel="noopener noreferrer" aria-label="DeliveryCare AI on GitHub" class="text-slate-400 hover:text-slate-900 text-xl transition hover:scale-110"><i class="fa-brands fa-github"></i></a>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-1">DeliveryCare AI</h3>
+<p class="text-blue-600 font-semibold text-sm mb-3">AI Delivery Problem Analysis Agent</p>
+<p class="text-slate-600 text-sm leading-relaxed mb-5">An AI FastAPI service that analyzes customer delivery problems and converts unstructured text into structured decisions, urgency levels, and recommended actions.</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Python</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">FastAPI</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Ollama</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Llama 3.1</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Pydantic</span>
+</div>
+</div>
+</div>
+<div class="px-6 pb-6 pt-1">
+<button onclick="openModal('deliverycare',this)" class="btn w-full bg-slate-900 hover:bg-blue-600 text-white text-sm font-semibold py-3 rounded-xl">View Details &amp; Architecture</button>
+</div>
+</article>
+
+<!-- Project 3: AI Career Coach -->
+<article class="rv card overflow-hidden flex flex-col justify-between" style="transition-delay:0ms">
+<div>
+<div class="pimg w-full h-48 sm:h-56 bg-slate-100 overflow-hidden border-b border-slate-100">
+<img src="aicareer.jpeg" alt="AI Career Coach Preview" loading="lazy" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=80'">
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start gap-3 mb-4">
+<span class="cat text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full">Skill Taxonomy &amp; Gap Analysis</span>
+<span class="text-slate-400 text-xs pt-1">Internal / Modular</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-1">AI Career Coach</h3>
+<p class="text-blue-600 font-semibold text-sm mb-3">AI-Powered Career &amp; Skill Gap Platform</p>
+<p class="text-slate-600 text-sm leading-relaxed mb-5">A platform helping users analyze career profiles, identify skill gaps against job roles with unified skill taxonomy, aliases, vector search, and structured AI responses.</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Python</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Streamlit</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">FastAPI</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Qdrant</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Docker</span>
+</div>
+</div>
+</div>
+<div class="px-6 pb-6 pt-1">
+<button onclick="openModal('careercoach',this)" class="btn w-full bg-slate-900 hover:bg-blue-600 text-white text-sm font-semibold py-3 rounded-xl">View Details &amp; Architecture</button>
+</div>
+</article>
+
+<!-- Project 4: OCR -->
+<article class="rv card overflow-hidden flex flex-col justify-between" style="transition-delay:100ms">
+<div>
+<div class="pimg w-full h-48 sm:h-56 bg-slate-100 overflow-hidden border-b border-slate-100">
+<img src="ocr.jpeg" alt="OCR Pipeline Preview" loading="lazy" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1568667256549-094345857637?w=800&auto=format&fit=crop&q=80'">
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start gap-3 mb-4">
+<span class="cat text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full">OCR &amp; Document AI</span>
+<span class="text-slate-400 text-xs pt-1">Pipeline</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 mb-1">OCR &amp; Document Intelligence</h3>
+<p class="text-blue-600 font-semibold text-sm mb-3">Arabic &amp; English OCR Pipeline</p>
+<p class="text-slate-600 text-sm leading-relaxed mb-5">Robust text extraction pipeline for Arabic and English documents with orientation handling, bidirectional text management, and LLM-based text cleanup and structuring.</p>
+<div class="flex flex-wrap gap-1.5">
+<span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">Python</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">PaddleOCR</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">PP-OCRv5</span><span class="tag bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">LLMs</span>
+</div>
+</div>
+</div>
+<div class="px-6 pb-6 pt-1">
+<button onclick="openModal('ocr',this)" class="btn w-full bg-slate-900 hover:bg-blue-600 text-white text-sm font-semibold py-3 rounded-xl">View Details &amp; Architecture</button>
+</div>
+</article>
+</div>
+</section>
+
+<!-- Engineering Approach -->
+<section id="approach" class="py-20 sm:py-24 bg-white border-y border-slate-200 px-5 sm:px-6">
+<div class="max-w-5xl mx-auto text-center">
+<h2 class="rv text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">How I Build AI Systems</h2>
+<p class="rv text-slate-600 mb-14">My engineering approach goes beyond simple prompting to build production-grade workflows.</p>
+<div class="rv relative grid grid-cols-1 md:grid-cols-4 gap-5 text-left">
+<div class="pline hidden md:block absolute top-[22px] left-[12%] right-[12%] h-0.5 bg-blue-200"></div>
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-blue-600 text-white grid place-items-center text-sm font-bold ring-8 ring-white mb-4 relative"><i class="fa-solid fa-magnifying-glass"></i></div>
+<div class="card p-4 bg-slate-50"><span class="text-xs font-bold text-blue-600 mb-1 block">01. Analysis</span><p class="text-sm font-semibold text-slate-800">Problem &amp; Data Formulation</p></div>
+</div>
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-blue-600 text-white grid place-items-center text-sm font-bold ring-8 ring-white mb-4 relative"><i class="fa-solid fa-diagram-project"></i></div>
+<div class="card p-4 bg-slate-50"><span class="text-xs font-bold text-blue-600 mb-1 block">02. Orchestration</span><p class="text-sm font-semibold text-slate-800">LLM / RAG / Agents</p></div>
+</div>
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-blue-600 text-white grid place-items-center text-sm font-bold ring-8 ring-white mb-4 relative"><i class="fa-solid fa-server"></i></div>
+<div class="card p-4 bg-slate-50"><span class="text-xs font-bold text-blue-600 mb-1 block">03. Backend API</span><p class="text-sm font-semibold text-slate-800">FastAPI &amp; Structured JSON</p></div>
+</div>
+<div class="relative">
+<div class="w-11 h-11 rounded-full bg-blue-600 text-white grid place-items-center text-sm font-bold ring-8 ring-white mb-4 relative"><i class="fa-solid fa-circle-check"></i></div>
+<div class="card p-4 bg-slate-50"><span class="text-xs font-bold text-blue-600 mb-1 block">04. Evaluation</span><p class="text-sm font-semibold text-slate-800">Testing &amp; Deployment</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Experience & Education -->
+<section id="experience" class="py-20 sm:py-24 max-w-4xl mx-auto px-5 sm:px-6">
+<h2 class="rv text-3xl sm:text-4xl font-extrabold text-slate-900 mb-12 text-center">Experience &amp; Education</h2>
+<div class="tl space-y-6">
+
+<div class="rv relative pl-11">
+<span class="dot"></span>
+<div class="card p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-xl border border-slate-100 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0 p-1"><img src="sprints.png" alt="Sprints Logo" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&auto=format&fit=crop&q=80'"></div>
+<div><h3 class="font-bold text-slate-900 text-lg">AI Engineer Intern</h3><p class="text-blue-600 font-semibold text-sm">Sprints</p></div>
+</div>
+<a href="https://drive.google.com/file/d/1A9e0BLLjR4CuZ6YSpn1HPEcJbtsQxbx_/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn inline-flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold rounded-xl border border-blue-200 self-start sm:self-center"><i class="fa-solid fa-arrow-up-right-from-square text-blue-600"></i> View Certificate</a>
+</div>
+<p class="text-slate-600 text-sm leading-relaxed">Completed AI engineering internship focusing on LLM applications, AI systems, and practical project development.</p>
+</div>
+</div>
+
+<div class="rv relative pl-11">
+<span class="dot"></span>
+<div class="card p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-xl border border-slate-100 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0 p-1"><img src="tips.png" alt="Tips Hindawi Logo" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&auto=format&fit=crop&q=80'"></div>
+<div><h3 class="font-bold text-slate-900 text-lg">Generative AI / LLM / RAG Intern</h3><p class="text-blue-600 font-semibold text-sm">Tips Hindawi / Edrak AI</p></div>
+</div>
+<a href="ض" target="_blank" rel="noopener noreferrer" class="btn inline-flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold rounded-xl border border-blue-200 self-start sm:self-center"><i class="fa-solid fa-arrow-up-right-from-square text-blue-600"></i> View Certificate</a>
+</div>
+<p class="text-slate-600 text-sm leading-relaxed">Focused on LLMs, RAG, LangChain, local/optimized LLM workflows, Streamlit, and AI application development (Final project: EchoMeet).</p>
+</div>
+</div>
+
+<div class="rv relative pl-11">
+<span class="dot"></span>
+<div class="card p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-xl border border-slate-100 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0 p-1"><img src="delta.png" alt="Delta University Logo" class="w-full h-full object-contain" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=100&auto=format&fit=crop&q=80'"></div>
+<div>
+<h3 class="font-bold text-slate-900 text-lg">Bachelor of Artificial Intelligence</h3>
+<p class="text-slate-600 font-medium text-sm">Faculty of Artificial Intelligence — Delta University for Science and Technology</p>
+<div class="flex flex-wrap items-center gap-2 mt-2">
+<span class="inline-flex items-center gap-1 text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded-md">Grade: Very Good</span>
+<span class="inline-flex items-center gap-1 text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 px-2.5 py-0.5 rounded-md">GPA: 2.9</span>
+</div>
+</div>
+</div>
+<span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200 self-start sm:self-center whitespace-nowrap">Graduated: July 2026</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Certificate Modal -->
+<div id="certModal" class="modal" aria-hidden="true">
+<div class="panel bg-white rounded-2xl max-w-3xl w-full p-6 relative shadow-2xl overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
+<div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
+<h3 id="certModalTitle" class="text-lg font-bold text-slate-900">Certificate Preview</h3>
+<button onclick="closeCertificateModal()" aria-label="Close" class="text-slate-500 hover:text-white hover:bg-blue-600 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-lg transition">&times;</button>
+</div>
+<div class="w-full max-h-[75vh] overflow-y-auto rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center p-2">
+<img id="certModalImage" src="" alt="Certificate" class="max-w-full h-auto rounded-lg shadow-sm">
+</div>
+</div>
+</div>
+
+<!-- Contact -->
+<section id="contact" class="py-20 sm:py-24 px-5 sm:px-6 bg-white border-t border-slate-200">
+<div class="rv max-w-4xl mx-auto rounded-3xl bg-blue-600 text-white text-center px-6 sm:px-12 py-14 sm:py-16 shadow-xl shadow-blue-600/20">
+<h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Let's Build Something Intelligent</h2>
+<p class="text-blue-100 mb-10 max-w-xl mx-auto">Have an AI product, automation workflow, or intelligent application in mind? Reach out directly.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+<a href="mailto:muhammedfaragmuhammed@gmail.com" class="btn flex items-center gap-4 p-5 bg-white rounded-2xl hover:shadow-lg group">
+<div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fa-solid fa-envelope text-lg"></i></div>
+<div class="min-w-0"><p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Email</p><p class="text-sm font-bold text-slate-900 truncate">muhammedfaragmuhammed@gmail.com</p></div>
+</a>
+<a href="tel:01025401933" class="btn flex items-center gap-4 p-5 bg-white rounded-2xl hover:shadow-lg group">
+<div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition"><i class="fa-solid fa-phone text-lg"></i></div>
+<div><p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Phone</p><p class="text-sm font-bold text-slate-900">01025401933</p></div>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="py-8 bg-slate-900 text-slate-400 text-center text-sm">
+<div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+<p>© 2026 Mohamed Farag. All rights reserved.</p>
+<div class="flex space-x-6 text-slate-400">
+<a href="https://github.com/mohamedel666" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="hover:text-white transition hover:-translate-y-0.5"><i class="fa-brands fa-github text-lg"></i></a>
+<a href="https://linkedin.com/in/mohamed-farag-3aa602380" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-white transition hover:-translate-y-0.5"><i class="fa-brands fa-linkedin text-lg"></i></a>
+</div>
+</div>
+</footer>
+
+<!-- Project Modal -->
+<div id="projectModal" class="modal" aria-hidden="true">
+<div class="panel bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+<button id="mClose" onclick="closeModal()" aria-label="Close" class="absolute top-4 right-4 text-slate-500 hover:text-white hover:bg-blue-600 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-xl transition">&times;</button>
+<div id="modalContent"></div>
+</div>
+</div>
+
+<script>
+const projectData = {
+  echomeet: {
+    title: "EchoMeet — AI Meeting Assistant",
+    tech: ["React", "FastAPI", "WebRTC", "AssemblyAI", "Gemini", "Python"],
+    desc: "EchoMeet is an AI-powered meeting assistant designed to capture, transcribe, understand, and summarize meetings automatically.",
+    features: ["Real-time audio processing", "Speech-to-Text with Arabic & English support", "Speaker diarization", "AI-generated summaries, decisions, and action items", "Interactive meeting chat & noise cancellation"],
+    architecture: "Audio / Mic → WebRTC → Speech-to-Text → Speaker Diarization → LLM Processing → Summary & Action Items",
+    github: "https://github.com/mohamedel666/EchoMeet"
+  },
+  deliverycare: {
+    title: "DeliveryCare AI — AI Delivery Problem Analysis Agent",
+    tech: ["Python", "FastAPI", "Ollama", "Llama 3.1", "Pydantic", "REST API"],
+    desc: "An AI-powered FastAPI service that analyzes delivery-related customer problems and converts them into structured decisions and recommended actions.",
+    features: ["Problem type classification", "Order status & urgency estimation", "Refund requirement assessment", "Structured JSON response output"],
+    architecture: "Customer Problem → FastAPI API → AI Analysis Agent → Structured Output → Business Action",
+    github: "https://github.com/mohamedel666/delivery-care-ai"
+  },
+  careercoach: {
+    title: "AI Career Coach — Career & Skill Gap Platform",
+    tech: ["Python", "Streamlit", "FastAPI", "Qdrant", "Docker", "Gemini"],
+    desc: "A platform helping users analyze career profiles, match roles, and identify skill gaps with a unified skill taxonomy and vector search.",
+    features: ["Skill Gap Analysis", "Job Role Analysis & Profile Comparison", "Skill normalization & aliases", "API endpoints & Qdrant vector database setup"],
+    architecture: "User Profile / Job Description → Skill Taxonomy & Aliases → Qdrant Vector Search → LLM Analysis → Gap Report",
+    github: "https://github.com/mohamedel666"
+  },
+  ocr: {
+    title: "OCR & Document Intelligence — Arabic & English OCR Pipeline",
+    tech: ["Python", "PaddleOCR", "PP-OCRv5", "Arabic OCR Models", "LLMs"],
+    desc: "Robust text extraction pipeline for Arabic and English documents with orientation handling, bidirectional text management, and LLM text cleanup.",
+    features: ["Arabic & English OCR", "Text Detection & Recognition", "Orientation handling & word-level bboxes", "Arabic bidirectional text handling", "LLM-based text structuring"],
+    architecture: "Image / Document → OCR Engine → Raw Text → Bidirectional Correction → LLM Cleanup → Structured Data",
+    github: "https://github.com/mohamedel666"
+  }
+};
+
+let lastFocus = null;
+const pm = document.getElementById('projectModal'), cm = document.getElementById('certModal');
+
+function lock(on){ document.body.style.overflow = on ? 'hidden' : ''; }
+function show(m, focusEl){ lastFocus = document.activeElement; m.classList.add('open'); m.setAttribute('aria-hidden','false'); lock(true); setTimeout(()=>focusEl && focusEl.focus(), 60); }
+function hide(m){ m.classList.remove('open'); m.setAttribute('aria-hidden','true'); lock(false); if (lastFocus) lastFocus.focus(); }
+
+function openModal(id, btn) {
+  const p = projectData[id]; if (!p) return;
+  const cat = btn && btn.closest('article') ? btn.closest('article').querySelector('.cat').textContent : '';
+  const steps = p.architecture.split(' → ');
+  document.getElementById('modalContent').innerHTML = `
+    ${cat ? `<span class="inline-block text-xs font-bold bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full mb-3">${cat}</span>` : ''}
+    <h3 id="mTitle" class="text-2xl font-extrabold text-slate-900 mb-3 pr-10 leading-tight">${p.title}</h3>
+    <p class="text-slate-600 text-sm sm:text-base mb-5 leading-relaxed">${p.desc}</p>
+    <div class="flex flex-wrap gap-1.5 mb-7">${p.tech.map(t => `<span class="bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">${t}</span>`).join('')}</div>
+    <h4 class="font-bold text-slate-900 text-sm mb-3">Key Features</h4>
+    <ul class="space-y-2 text-sm text-slate-600 mb-7">${p.features.map(f => `<li class="flex gap-3"><i class="fa-solid fa-circle-check text-blue-600 mt-0.5"></i><span>${f}</span></li>`).join('')}</ul>
+    <h4 class="font-bold text-slate-900 text-sm mb-3">Architecture Flow</h4>
+    <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl mb-7 flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-700">
+      ${steps.map((s,i) => `<span class="bg-white border border-slate-200 px-2.5 py-1.5 rounded-lg shadow-sm">${s}</span>${i < steps.length-1 ? '<i class="fa-solid fa-arrow-right text-blue-500 text-[10px]"></i>' : ''}`).join('')}
+    </div>
+    <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="btn inline-flex bg-slate-900 hover:bg-blue-600 text-white text-sm font-semibold px-5 py-3 rounded-xl items-center gap-2"><i class="fa-brands fa-github"></i> View Repository</a>`;
+  show(pm, document.getElementById('mClose'));
+}
+function closeModal(){ hide(pm); }
+function openCertificateModal(title, src){
+  document.getElementById('certModalTitle').innerText = title;
+  document.getElementById('certModalImage').src = src;
+  show(cm, cm.querySelector('button'));
+}
+function closeCertificateModal(){ hide(cm); }
+
+[pm, cm].forEach(m => m.addEventListener('click', e => { if (e.target === m) hide(m); }));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { if (pm.classList.contains('open')) closeModal(); else if (cm.classList.contains('open')) closeCertificateModal(); }
+});
+
+// Scroll reveal
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// Mobile menu
+const mb = document.getElementById('menuBtn'), mm = document.getElementById('mobileMenu');
+function toggleMenu(open){ mm.classList.toggle('hidden', !open); mb.setAttribute('aria-expanded', open); mb.firstElementChild.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'; }
+mb.addEventListener('click', () => toggleMenu(mm.classList.contains('hidden')));
+mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+// Active nav + sliding underline
+const links = [...document.querySelectorAll('#links .nl')], mlinks = [...document.querySelectorAll('.ml')], ul = document.getElementById('ul');
+const ids = links.map(a => a.getAttribute('href').slice(1));
+let current = -1;
+function moveUnderline(){
+  if (current < 0) { ul.style.opacity = 0; return; }
+  const a = links[current];
+  ul.style.width = a.offsetWidth + 'px';
+  ul.style.transform = `translateX(${a.offsetLeft}px)`;
+  ul.style.opacity = 1;
+}
+function setActive(i){
+  if (i === current) return;
+  current = i;
+  links.forEach((a,k) => { a.classList.toggle('on', k === i); k === i ? a.setAttribute('aria-current','true') : a.removeAttribute('aria-current'); });
+  mlinks.forEach((a,k) => a.classList.toggle('text-blue-600', k === i));
+  moveUnderline();
+}
+let ticking = false;
+function onScroll(){
+  if (ticking) return; ticking = true;
+  requestAnimationFrame(() => {
+    let idx = -1;
+    ids.forEach((id,k) => { const s = document.getElementById(id); if (s && s.getBoundingClientRect().top <= 140) idx = k; });
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) idx = ids.length - 1;
+    setActive(idx);
+    ticking = false;
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', moveUnderline);
+window.addEventListener('load', () => { onScroll(); moveUnderline(); });
+onScroll();
+</script>
+</body>
+</html>
